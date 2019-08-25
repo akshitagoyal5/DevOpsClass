@@ -1,0 +1,18 @@
+---
+-
+  Employee:
+     name: Akshita Goyal
+     Age: 25
+     Department: IT
+     Title: Technology Integration Engineer
+     Projects:
+       - Support
+       - Development
+     Paylip:
+       - Month: Jan
+         Wage: 30k
+       - Month: Feb
+         Wage: 35k
+       - Month: March
+         Wage: 30k
+...

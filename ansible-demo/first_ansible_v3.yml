@@ -1,0 +1,25 @@
+---
+- hosts: web
+  gather_facts: false #it is by default true. False will skip the Gathering facts task.
+  vars:
+    packg_name: httpd
+    serv_name: httpd
+ 
+  tasks:
+    - name: Install {{ packg_name }}
+      yum: pkg={{ packg_name }} state=installed
+      become: yes
+      register: output #redirecting output to variable output
+    - debug: 
+        var: output
+#        msg: "output.stdout"
+    - name: Print Successful Message
+      debug: msg="Installation successfull"
+      when: output is succeeded
+  
+    - name: Print failure message
+      debug: msg="Installation failed"
+      when: output is failed
+    - name: Start {{ serv_name }}
+      service: name={{ serv_name }} state=started
+      become: yes

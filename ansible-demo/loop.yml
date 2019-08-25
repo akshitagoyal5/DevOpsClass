@@ -1,0 +1,16 @@
+---
+- 
+  name: Print list of fruits
+  hosts: localhost
+  vars:
+    fruits:
+      - Apple
+      - Orange
+      - Grape
+      - Banana
+
+  tasks:
+    - 
+      debug: msg="{{ item }}"
+      with_items: '{{ fruits }}'
+

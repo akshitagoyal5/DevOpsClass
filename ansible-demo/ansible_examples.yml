@@ -1,0 +1,23 @@
+---
+- hosts: web 
+  become: true
+  tasks:
+  - name: Create a file
+    file: path=/opt/ansible/file1.txt state=present
+    tags:
+      - Create_File
+
+  - name: Create a directory
+    file: path=/opt/ansible/directory1 state=directory owner=ec2
+    tags:
+      - Create_directory
+
+  - name: Copy content
+    copy: content="Hello there" dest=/opt/ansible/file1.txt
+    tags:
+      - Copy_content
+
+  - name: Create log with date and time
+    command: touch /opt/ansible/sample_{{ansible_date_time.date}}.log
+    tags:
+      - Create_log
